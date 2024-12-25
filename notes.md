@@ -93,5 +93,3 @@ A DV that probably originated from the decay of a c-hadron, will have two, three
 - $m_{corr}$ > 0.6 GeV
 - uncertainaty on $m_{corr}$ < 0.5 GeV
 - $\Delta R$ < 0.5
-
-
