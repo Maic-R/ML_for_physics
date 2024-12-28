@@ -37,3 +37,5 @@ The classification leverages the following insights:
 - **Light jets** lack distinct secondary vertex signatures or exhibit minimal displacement from the primary vertex.
 
 A machine learning model will be trained on the labeled datasets (`ljet_training.csv`, `cjet_training.csv`, `bjet_training.csv`) to distinguish the three classes based on the feature set. The `competitionData.csv` will serve as the test set for validation.
+
+## Python notebook

@@ -22,7 +22,7 @@ This is a typical signature of a heavy quark jet, but may also arise in light je
 
 ## Dataset description
 
-Dataset contains jet data simulated considering pp interactions at the LHCb experiment. When there is a jet, what one does is look among the constituent track of the jet, to see if there are pairs/triplets (or combinations with a variable number) pf tracks that can be associated to a decay vertex. Afterward, it is possible to select the jet depending on the properties of the secondary vertex. Most of the times there are multiple secondary vertices per jet, but with selection criteria it is possible to discard most of them. If more than one secondary vertex associated to a jet remains, the situation can be handled in several ways.
+Dataset contains jet data simulated considering pp interactions at the LHCb experiment. When there is a jet, what one does is look among the constituent track of the jet, to see if there are pairs/triplets (or combinations with a variable number) of tracks that can be associated to a decay vertex. Afterward, it is possible to select the jet depending on the properties of the secondary vertex. Most of the times there are multiple secondary vertices per jet, but with selection criteria it is possible to discard most of them. If more than one secondary vertex associated to a jet remains, the situation can be handled in several ways.
 
 The dataset contains three csv files: 
 
@@ -55,13 +55,14 @@ This variable could be usefull to distinguish jets with secondary vertices (heav
 
 - **m:** mass of the secondary vertex
 
-- **mCor:** corrected mass of the secondary vertex. It is defined as: $m_{corr}(DV) = \sqrt{m(DV)^2 + [p(DV)sin\theta]^2} + p(DV)sin\theta$, where $\theta$ is the angle between the DV momentum and its direction of flight.
+- **mCor:** corrected mass of the secondary vertex. It is defined as: $m_{corr}(DV) = \sqrt{m(DV)^2 + [p(DV)sin\theta]^2} + p(DV)sin\theta$, where $\theta$ is the angle between the DV momentum and its direction of flight. The corrected mass is the
+minimum mass that the long-lived hadron can have that is consistent with the direction of flight
 
 - **mCorErr:** error on corrected mass
 
 - **nTrk:** the number of tracks associated to the secondary vertex. A higher number of tracks indicates a more complex decay topology
 
-- **nTrkJet:** number of tracks in the entire jet. It should be less than nTrk, but taking a look at c-jets dataset what I see is that nTrk $\ge$ nTrkJet. So this has to be understood better 
+- **nTrkJet:** number of tracks in the entire jet. It should be less than nTrk, but taking a look at c-jets dataset what I see is that nTrk $\ge$ nTrkJet. So this has to be understood better. Based on _Identification of charm and beauty jets_ paper, this variable could represent the number of SV tracks with $\Delta R$ < 0.5 relative to the jet axis
 
 - **pt:** transverse momentum of a constituent particle or track
 
@@ -75,7 +76,10 @@ For high-flavour jets we should expect higher lifetimes compared to light flavou
 - **ipChi2Sum:** sum of $\chi^2$ values of the impact parameters of tracks in the secondary vertex. Quantifies the consistency of the tracks displacement from the primary vertex. $\chi^2_{IP}$ is defined as the difference in the vertex-fit $\chi^2$ of the PV reconstructed with and without the track under consideration
 
 
-Comment on PT and pt: PT is an aggregate property of the entire jet, while pt breaks it down into individual components, namely the transverse momentum of specific particles or tracks in the jet. By examining pt it is possible to study the distribution of momentum within the jet. In jet tagging applications heavy flavour jets often have high-momentum tracks from decay products, which might stand out in the pt spectrum compared to light-flavour jets.
+Comment on PT and pt: PT is an aggregate property of the entire jet, while pt breaks it down into individual components, namely the transverse momentum of specific particles or tracks in the jet. By examining pt it is possible to study the distribution of momentum within the jet.\
+<span style="color:green;">
+In jet tagging applications heavy flavour jets often have high-momentum tracks from decay products, which might stand out in the pt spectrum compared to light-flavour jets.
+</span>
 
 ## Notes from "Identification of charm jets at LHCb" paper
 
@@ -93,3 +97,13 @@ A DV that probably originated from the decay of a c-hadron, will have two, three
 - $m_{corr}$ > 0.6 GeV
 - uncertainaty on $m_{corr}$ < 0.5 GeV
 - $\Delta R$ < 0.5
+
+## Notes from "Identification of charm and beauty jets" paper
+Events recorded due to the presence of a (b, c)-hadron decay require that at least one track should have $p_T$ > 1.7 GeV and $\chi^2_{IP}$ with respect to any primary interaction greater than 16, where $\chi^2_{IP}$ is defined as the difference in $\chi^2$ of a given primary pp interaction vertex (PV) reconstructed with and without the considered track.
+
+<span style="color:green;">
+Decays of b hadrons are inclusively identified by requiring a two-, three- or four-track secondary vertex (SV) with a large sum of $p_T$ of the
+tracks and a significant displacement from the PV.
+</span>
+
+A specialized boosted decision tree (BDT) algorithm is used for the identification of SVs consistent with the decay of a b hadron.
