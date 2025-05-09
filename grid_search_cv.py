@@ -8,10 +8,11 @@ from sklearn.utils import resample
 def grid_search() -> dict:
 
     search_space = {
-        'n_estimators': np.arange(150, 500, 50, int),   # number of trees in the forest
+        'n_estimators': np.arange(150, 800, 50, int),   # number of trees in the forest
         'max_depth': np.arange(1, 30, 10, int),          # depth of each tree
-        'min_samples_split': np.arange(1, 30, 10, int),  # minimum number of samples to split an internal node
-        'min_samples_leaf': np.arange(1, 20, 5, int)    # 
+        'min_samples_split': np.arange(2, 30, 10, int),  # minimum number of samples to split an internal node
+        'min_samples_leaf': np.arange(1, 20, 5, int),    # 
+        'criterion' : ['gini', 'entropy', 'log_loss']
     }
 
     rnd_forest = RandomForestClassifier(random_state=42)
@@ -33,7 +34,7 @@ def grid_search() -> dict:
     X_train, _, y_train, _ = train_test_split(X, y, train_size=0.8, random_state=42, stratify=y)
 
     # sample a fraction of the training dataset for hyperparameter tuning
-    sample_fraction = 0.2
+    sample_fraction = 1
     X_train_sample, y_train_sample = resample(X_train, y_train, replace=False, n_samples=int(sample_fraction * len(X_train)), random_state=42)
 
     grid_search.fit(X_train_sample, y_train_sample)
